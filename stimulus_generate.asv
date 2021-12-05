@@ -1,0 +1,29 @@
+function stimulus = stimulus_generate(HW_RZ6)
+%nstim = 10 ;% total no of stimulus in each trial
+stim_dur = 0.5 ; % duration of each stimulus
+fs= 195312.5; % sampling rate
+ramp_dur=0.01; %ramp duration in seconds
+ISI_dur=.2; %ISI duration in seconds
+t = 0:1/fs:(stim_dur-1/fs);
+ISI=zeros(fix(ISI_dur*fs),1);
+stimdb =10;
+mxpts = length(t);
+% for two difeerent tones to be played
+a_fre = 7000;
+b_fre = 11000;
+%tone_a= sqrt(2)*20e-6*10^(stimdb/20)*sin(2*pi*a_fre*t);
+tone_a= 10*10^(-stimdb/20)*sin(2*pi*a_fre*t);
+
+rampSamps = floor(fs*ramp_dur);
+tone_a(1:rampSamps)=tone_a(1:rampSamps).*(0:(rampSamps-1))/rampSamps; 
+tone_a((mxpts-rampSamps):mxpts)=tone_a((mxpts-rampSamps):mxpts).*(rampSamps:-1:0)/rampSamps;
+stimulus= (tone_a);
+
+% figure()
+% hold on
+stimulus = [stimulus'];
+stimulus=[stimulus stimulus];
+pause(0.2);
+%plot((1:length(stimulus))/HW_RZ6,stimulus,'r')
+end
+

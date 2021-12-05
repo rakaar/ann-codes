@@ -1,0 +1,78 @@
+%%last modified on :
+% last modiied by :
+%
+function generalix()
+daqreset 
+close all;
+clear all;
+%warning off;
+clc;
+
+%%INITIALISATION
+
+global s list1 fs flag datair1 TimeStamps1 TriggerTime1 reward_pulse_dur reward_pulse reward_received stimflag status check;
+fs = 10;% sampling rate 
+flag =0;% to count the in and out in reward chamber 
+timeduration =30;% total time duration for which the session should run in seconds
+stimflag = 0 ;
+reward_received = 0;
+%nstim = 10;
+status = 0;
+check = 0;
+irthr = 0.0;% threshold for ir 
+
+%% DAQ SESSION CREATION ans session properties 
+
+s = daq.createSession('ni');
+s.Rate=fs;
+%IsContinuous= true;
+s.DurationInSeconds= timeduration;
+%% add channels to session 
+
+% analog input channels
+ ch= addAnalogInputChannel(s,'Dev1',0,'Voltage'); 
+ ch(1).InputType = 'SingleEndedNonReferenced';
+%  ch(2).InputType = 'SingleEndedNonReferenced';
+%  ch(3).InputType = 'SingleEndedNonReferenced';
+ ch(1).Name = 'Nosepoke' ;
+%  ch(2).Name = 'reward chamber';
+%  ch(3).Name = 'waterdispenser'; 
+%  %analog output channels
+%  ch_op= addAnalogOutputChannel(s,'Dev1','ao3','Voltage');
+%  ch_op.Name = 'reward pulse';
+
+%% Add listeners
+%list1 = s.addlistener('DataAvailable',@main2);
+list1 = s.addlistener('DataAvailable',@(src,event) nosepoke(event.Data,irthr));
+%list2 = s.addlistener('DataAvailable',@(src,event) main2reward(event.Data(:,2),-5));
+
+s.NotifyWhenDataAvailableExceeds = 50;
+
+s.startBackground();
+
+%% acquire User data 
+%  if check == 0
+%      s.startBackground();
+%  else if check >1
+%      delete(list1);
+%      stop(s);
+%      end
+end
+ 
+ %pause(.5);
+ %% perform loading only whenever required 
+%   if check == 1
+%       main22reward()
+%   end
+%     stop(s);
+
+% %% clear teh session and the channels 
+% delete(list1);
+
+% clear s channel1 list1;
+% %% callback functions 
+% % to plot data available event 
+
+
+
+
