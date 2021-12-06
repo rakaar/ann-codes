@@ -17,7 +17,7 @@ ch_ip(1).InputType = 'SingleEndedNonReferenced';
 
 list1 = sir.addlistener('DataAvailable',@(src,event) cont(event,irthr));
 
-sir.NotifyWhenDataAvailableExceeds =200;
+sir.NotifyWhenDataAvailableExceeds =50;
 sir.startBackground();
 wait(sir);
 %  if (sir.IsDone == 1)

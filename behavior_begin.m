@@ -30,7 +30,7 @@ cr = 0;
 miss= 0;
 fa=0;
 gen.tot_ntrials=0;
-gap=0.2;% pause time 
+gap=0.05;% pause time 
 timeout=10;
 fa_nostim =0;
 gen.missper=0;
@@ -83,9 +83,13 @@ for q=1:gen.ntrials
 end
 %% final save of mat file generated 
 
- 
-gen.hitper= length(find(gen.resp == 1))/((length(find(gen.resp == 1)))+(length(find(gen.resp == 4))));
-gen.tri_abrt_per= ((length(find(gen.resp==6) )+length(find(gen.resp==5)))/gen.ntrials)*100;
+ clc;
+gen.hitper= length(find(gen.resp == 1))/((length(find(gen.resp == 1)))+(length(find(gen.resp == 4))))
+gen.tri_abrt_per= ((length(find(gen.resp==6) )+length(find(gen.resp==5)))/gen.ntrials)*100
 cd(datadir);
 save(sprintf('%d_%s.mat',str2num(gen.mousedetails{1}),currDate)); % F:\ann_beha_pro2\data
 cd(mainfolder)
+figure(100);
+stem(gen.hittime)
+figure(101);
+stem(gen.resp)
