@@ -7,8 +7,7 @@ ir2cut = find(ir2 < thr);
 if length(ir2cut) >= 1
         flag2=1;
         delete(list1);
-   else
-flag2=0;  
+     
 end     
 end
 

@@ -1,7 +1,7 @@
 %% for noise signal fr timeout and wrong lick
 function stimulus = noise(HW_RZ6)
-fl=5000;
-fh=15000;
+fl=34000;
+fh=68000;
 stim_dur =1 ; 
 fs=HW_RZ6;
 att = 0;
