@@ -5,7 +5,7 @@ global sir fs1 irthr list1 flag;
 tdur= chk;% duration for whcih the mouse can access water as teh reward
 irthr=3;
 %flag =0;
-fs1 = 1000;
+fs1 = 10000;
 sir= daq.createSession('ni');
 sir.Rate=fs1;
 sir.DurationInSeconds=tdur;
@@ -17,7 +17,7 @@ ch_ip(1).InputType = 'SingleEndedNonReferenced';
 
 list1 = sir.addlistener('DataAvailable',@(src,event) cont(event,irthr));
 
-sir.NotifyWhenDataAvailableExceeds =50;
+sir.NotifyWhenDataAvailableExceeds =100;
 sir.startBackground();
 wait(sir);
 %  if (sir.IsDone == 1)

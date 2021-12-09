@@ -4,7 +4,7 @@ fprintf('\n reward chkkkkkk\n');
 daqreset;
 global gen q srew fs1 irthr list1 check2;
 %global  srew fs1 irthr list1 check2;
-tdur= 5;% duration for whcih the mouse can access water as the reward
+tdur= 8;% duration for whcih the mouse can access water as the reward
 irthr=3;
 check2=0;
 fs1 = 1000;
