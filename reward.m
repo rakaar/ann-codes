@@ -13,7 +13,7 @@ ch_op.Name = 'reward pulse';
 
 reward_pulse_dur = 0.0003;
 reward_pulse = zeros(fix(reward_pulse_dur*10*fs),1);% definition of an array with 9 rows
-reward_pulse(fix(reward_pulse_dur*fs+1):fix(reward_pulse_dur*1*fs)+2)=5;
+reward_pulse(fix(reward_pulse_dur*fs+1):fix(reward_pulse_dur*1*fs)+3)=5;
 disp(length(reward_pulse))
 %for i=1:5
 

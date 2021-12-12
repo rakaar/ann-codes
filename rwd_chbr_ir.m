@@ -1,6 +1,6 @@
 %% %% callback function of list1
 function rwd_chbr_ir(event,thr)
- global gen q srew ir2 TimeStamps1 TriggerTime1 list1 check2 t;
+ global gen q srew ir2 TimeStamps1 TriggerTime1 list1 check2 t b;
 %global srew ir2 TimeStamps1 TriggerTime1 list1 check2 ;
 fprintf('\n reward chkkkkkk after nfsabfbaibfhiab \n');
 disp('avasaf')
@@ -27,7 +27,7 @@ if length(ir2cut) >= 1 % as first column represents data from ir 2 = reward cham
 % %     disp(t);
 % %     disp(gen.timstp(t));
 % %     disp(seconds(gen.timstp(t)));
-        gen.hittime(1,q) = double(gen.timstp(t));
+        gen.hittime(1,q) = double(gen.timstp(t)) + b;
         beha_analysis();
         delete(list1);
 else

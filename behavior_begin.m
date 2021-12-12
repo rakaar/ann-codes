@@ -48,8 +48,9 @@ cd(mainfolder);
 
 %% checking nosepoke for all trials
 for q=1:gen.ntrials
+    %for q=51:60
     gen.trialno(1,q) = 1;
-    gen.tot_ntrials = gen.tot_ntrials + 1;
+    %gen.tot_ntrials = gen.tot_ntrials + 1;
     gen.itr_trial_inv(1,q)= randi([3,5],1);
     flag2=0;
     beha_cont_iti(gen.itr_trial_inv(1,q));
